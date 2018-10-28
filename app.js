@@ -7,6 +7,11 @@ var bodyParser = require('body-parser');
 var appRoutes = require('./routes/app');
 var usuarioRoutes = require('./routes/usuario');
 var loginRoutes = require('./routes/login');
+var hospitalRoutes = require('./routes/hospital');
+var medicolRoutes = require('./routes/medico');
+var busquedalRoutes = require('./routes/busqueda');
+var uploadRoutes = require('./routes/upload');
+var imagenesRoutes = require('./routes/imagenes');
 
 // Inicializar variables
     var app=express();
@@ -49,9 +54,18 @@ mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true
 
 });   */ 
 
+/* var serveIndex = require('serve-index');
+app.use(express.static(__dirname + '/'))
+app.use('/uploads', serveIndex(__dirname + '/uploads')); */
+
 // Rutas para usar el otro archivo de rutas se referencia asi 
 app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
+app.use('/hospital', hospitalRoutes);
+app.use('/medico', medicolRoutes);
+app.use('/busqueda', busquedalRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/img', imagenesRoutes);
 app.use('/', appRoutes);
 
 // escuchar peticion
