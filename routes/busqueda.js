@@ -119,7 +119,7 @@ function buscarMedicos( busqueda, regex ){
 
 function buscarUsuarios( busqueda, regex ){  //busqueda en dos campos
     return new Promise( ( resolve, reject ) => {
-        Usuario.find({}, 'nombre email role')
+        Usuario.find({}, 'nombre email role')     // quitar el password
                .or([ {'nombre': regex}, {'email': regex}])
                .exec( (err, usuarios)=>{
                     if(err){
