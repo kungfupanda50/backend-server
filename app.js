@@ -5,24 +5,28 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mysql = require('mysql');
 var myConnection = require('express-myconnection');
+var cors = require('cors');
 
 // importar rutas 
 var appRoutes = require('./routes/app');
-var usuarioRoutes = require('./routes/usuario');
+//var usuarioRoutes = require('./routes/usuario');
 var loginRoutes = require('./routes/login');
 var loginMySqlRoutes = require('./routes/loginMySql');
 var hospitalRoutes = require('./routes/hospital');
 var medicolRoutes = require('./routes/medico');
+var medicoMysqlRoutes = require('./routes/medicoMySql');
 var busquedalRoutes = require('./routes/busqueda');
 var uploadRoutes = require('./routes/upload');
 var uploadMySqlRoutes = require('./routes/uploadMySql');
 var imagenesRoutes = require('./routes/imagenes');
 var usuarioMySqlRoutes = require('./routes/usuarioMySql');
-
 // Inicializar variables
 var app=express();
 
 // middlewares
+    // CORS
+    app.use(cors());
+
     // Bodyparser middleware
     // parse application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -84,11 +88,12 @@ app.use(express.static(__dirname + '/'))
 app.use('/uploads', serveIndex(__dirname + '/uploads')); */
 
 // Rutas para usar el otro archivo de rutas se referencia asi 
-app.use('/usuario', usuarioRoutes);
-app.use('/login', loginRoutes);
+//app.use('/usuario', usuarioRoutes);
+//app.use('/login', loginRoutes);
 app.use('/loginMySql', loginMySqlRoutes);
-app.use('/hospital', hospitalRoutes);
+//app.use('/hospital', hospitalRoutes);
 app.use('/medico', medicolRoutes);
+app.use('/medicoMySql', medicoMysqlRoutes);
 app.use('/busqueda', busquedalRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/uploadMySql', uploadMySqlRoutes);

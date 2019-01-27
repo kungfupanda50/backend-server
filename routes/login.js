@@ -14,8 +14,9 @@ app.post('/', (req, res) =>{
     var body = req.body; 
 
     Usuario.findOne({ email: body.email }, (err, usuarioDB)=>{
-
+/*
         if (err) {
+            console.log('prueba');
             return res.status(500).json({
                 ok: false,
                 mensaje: 'Error al buscar usuario',
@@ -23,6 +24,7 @@ app.post('/', (req, res) =>{
             });
         }
 
+*/
         if (!usuarioDB) {
             return res.status(400).json({
                 ok: false,
@@ -30,7 +32,7 @@ app.post('/', (req, res) =>{
                 errors: err
             });
         }
-
+/*
         if( !bcrypt.compareSync( body.password, usuarioDB.password) ){
             return res.status(400).json({
                 ok: false,
@@ -49,6 +51,7 @@ app.post('/', (req, res) =>{
             token: token,
             id: usuarioDB._id
         });
+        */
     });
 });
 

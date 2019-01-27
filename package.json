@@ -12,7 +12,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "express-myconnection": "^1.0.4",
     "jsonwebtoken": "^8.3.0",
