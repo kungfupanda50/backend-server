@@ -1,3 +1,4 @@
+// Busquedas en mongo con modelos en mongo que ya quitamos
 // Requires importacion de librerias
 var express = require('express');
 var Hospital = require('../models/hospital');
