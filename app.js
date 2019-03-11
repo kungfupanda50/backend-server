@@ -67,6 +67,7 @@ app.use('/img', imagenesRoutes);
 app.use('/usuarioMySql', usuarioMySqlRoutes);
 app.use('/', appRoutes);
 
+// console.log('Ya pasé las rutas');
 // escuchar peticion
 // Iniciando el servidor
 app.set('port', process.env.PORT || 3000);

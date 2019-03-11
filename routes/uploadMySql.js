@@ -31,7 +31,7 @@ app.put('/:tipo/:id', (req, res, next) => {   // donde tipo=tipo de imagen y id 
     var extensionArchivo = nombreCortado[ nombreCortado.length -1 ];
 
     // Extensiones que aceptaremos (las que nosotros queramos)
-    var extensionesValidas =['png', 'jpg', 'gif', 'jpeg'];
+    var extensionesValidas =['png', 'jpg', 'gif', 'jpeg', 'bmp', 'ico'];
 
     if(extensionesValidas.indexOf( extensionArchivo ) < 0 ){
         return res.status(400).json({
@@ -137,7 +137,8 @@ function subirPorTipo( tipo, id, nombreArchivo, req, res ){
                     return res.status(200).json({
                         ok: true,
                         mensaje: 'Imagen de usuario actualizada',
-                        usuario: rows
+                        usuario: rows,
+                        imgNueva: nombreArchivo
                     });
                 });
                 

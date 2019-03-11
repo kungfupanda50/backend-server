@@ -109,7 +109,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) =>{
             });
         };
       
-        conn.query('Select nombre as Reg FROM usuarios WHERE _id = ?', id, (err, rows)=>{
+        conn.query('Select nombre as Reg, password FROM usuarios WHERE _id = ?', id, (err, rows)=>{
 
             if (err) {
                 return res.status(400).json({
@@ -128,7 +128,11 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) =>{
                     });
 
             }
-
+            
+            if ( body.password="=)" ) {
+                body.password=rows[0].password;
+            };
+            
             conn.query('UPDATE usuarios set ? WHERE _id = ?', [body, id], (err, rows) => {
 
                 if (err) { // Error al actualizar el usuario
